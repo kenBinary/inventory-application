@@ -1,0 +1,2 @@
+run the app:
+     > SET DEBUG=inventory-application:* & npm start
