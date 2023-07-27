@@ -1,2 +1,34 @@
 run the app:
      > SET DEBUG=inventory-application:* & npm start
+
+-Inventory Application: Car Inventory
+
+-Models:
+>CAR
+->name: carName
+->description: carDesc
+->price: carPrice
+->inStock: numOfStock
+->category: CATEGORY
+->(virtual) url: url+id
+>CATEGORY
+->name
+->(virtual) url:url+id
+*each car can have one and only one category
+*each category can be assigned to one or more car
+
+-Database
+->Populate database with models and schemas
+
+-Setup Routes and Controllers
+
+-Create the "Read" views
+
+-Create forms and controllers to handle CRUD operations
+
+-(bonus) figure out how to add and upload images for each item
+->https://github.com/expressjs/multer
+
+-(bonus) figure out how to prevent descrutive actions by using password confirmation before update or deleting
+
+-deploy
