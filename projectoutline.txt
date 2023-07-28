@@ -20,11 +20,16 @@ run the app:
 -Database
 ->Populate database with models and schemas
 
--Setup Routes and Controllers
+-Setup Controllers 
 -> to get all vehicles based on category
 -> to get particular vehicle based on name
 -> to add new car or category
 -> to delete or edit car
+-Setup Routes
+-> route for all vehicles by category
+-> route for particular car
+-> route for adding car and category
+-> route for editing and deleting car
 
 -Create the "Read" views
 

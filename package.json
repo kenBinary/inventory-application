@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "devStart": "nodemon ./bin/www",
-    "serverStart": "$ENV:DEBUG = \"express-local-library:*\" & npm run devStart"
+    "serverStart": "$ENV:DEBUG = \"express-local-library:*\" & npm run devStart",
+    "sass": "sass --watch catalog.scss catalog.css"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -17,6 +18,7 @@
     "mongodb": "^5.7.0",
     "mongoose": "^7.4.1",
     "morgan": "~1.9.1",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "normalize.css": "^8.0.1"
   }
 }

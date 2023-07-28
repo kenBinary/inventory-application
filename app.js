@@ -47,12 +47,12 @@ const test = asyncHandler(async (req, res, next) => {
   const allCars = await Car.find().exec();
   res.send(allCars)
 });
-app.get("/test",test)
-// app.get("/test",(req,res)=>{
-//   res.render("index",{
-//     title: "bruh"
-//   })
-// })
+app.get("/test",(req,res)=>{
+  res.render("carView");
+})
+app.get("/tests",(req,res)=>{
+  res.render("catalog");
+})
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

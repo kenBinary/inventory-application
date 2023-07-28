@@ -1,0 +1,69 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0px;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  height: 100dvh;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 10% 90%;
+}
+body > * {
+  outline: 1px solid pink;
+}
+
+nav {
+  grid-row: 1/2;
+  grid-column: 1/3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+nav > .operations {
+  display: flex;
+  column-gap: 5px;
+}
+nav > .operations > div {
+  cursor: pointer;
+}
+nav > :nth-child(2) {
+  cursor: default;
+}
+nav > :nth-child(3) {
+  cursor: pointer;
+}
+
+aside {
+  padding: 0.5rem;
+}
+
+main {
+  padding: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  overflow-y: auto;
+}
+main > div {
+  height: 49%;
+  flex: 1;
+  flex-basis: 33%;
+  border: 1px solid black;
+}
+
+/*# sourceMappingURL=catalog.css.map */
