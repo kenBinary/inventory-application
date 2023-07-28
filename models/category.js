@@ -8,8 +8,8 @@ const categorySchema = new Schema(
     }
 )
 
-// categorySchema.virtual().get(() => {
-//     return "/car/" + this.name;
-// });
+categorySchema.virtual("categoryName").get(() => {
+    return "/car/" + this.name;
+});
 
 module.exports = mongoose.model("Category", categorySchema)

@@ -10,8 +10,8 @@ const carSchema = new Schema({
     category: { type: Schema.ObjectId, ref: "Category", required: true },
 }
 )
-// carSchema.virtual().get(() => {
-//     return "/car/" + this.name;
-// })
+carSchema.virtual("carName").get(() => {
+    return "/car/" + this.name;
+})
 
 module.exports = mongoose.model("Car", carSchema)

@@ -1,13 +1,16 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+// routers
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const categoryRouter = require('./routes/carCategories');
+const carRouter = require('./routes/cars')
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -19,14 +22,37 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// using routers
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/categories',categoryRouter)
+app.use('/cars',carRouter)
 
-app.get("/test",(req,res)=>{
-  res.render("index",{
-    title: "bruh"
-  })
-})
+// database
+// mongodb+srv://admin_compass:gta4henchmen@cluster0.5lkxi9e.mongodb.net/local_library?retryWrites=true&w=majority
+// Set up mongoose connection
+const databaseUrl = "mongodb+srv://admin:gta4henchmen@cluster0.rb4kkam.mongodb.net/?retryWrites=true&w=majority";
+const mongoose = require("mongoose");
+mongoose.set("strictQuery", false);
+const mongoDB = databaseUrl;
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(mongoDB);
+  console.log(mongoose.connection.readyState);
+}
+
+const asyncHandler = require("express-async-handler");
+const Car = require("./models/car");
+const test = asyncHandler(async (req, res, next) => {
+  const allCars = await Car.find().exec();
+  res.send(allCars)
+});
+app.get("/test",test)
+// app.get("/test",(req,res)=>{
+//   res.render("index",{
+//     title: "bruh"
+//   })
+// })
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

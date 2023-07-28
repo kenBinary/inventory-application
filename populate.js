@@ -15,8 +15,7 @@ main().catch((err) => console.log(err));
 
 async function main() {
     console.log("Debug: About to connect");
-    // await mongoose.connect(mongoDB);
-    await mongoose.connect("mongodb+srv://admin:gta4henchmen@cluster0.rb4kkam.mongodb.net/?retryWrites=true&w=majority")
+    await mongoose.connect(mongoDB);
     console.log(mongoose.connection.readyState);
     console.log("Debug: Should be connected?");
     await createCategories();
