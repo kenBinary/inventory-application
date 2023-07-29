@@ -9,16 +9,22 @@
 <body>
     <nav>
         <div class="operations">
-            <div>Add</div>
-            <div>Edit</div>
-            <div>Delete</div>
+            <a href="">Add</a>
+            <a href="">Edit</a>
+            <a href="">Delete</a>
         </div>
         <div>Car Inventory</div>
-        <div>Home</div>
+        <a href="/">Home</a>
     </nav>
     <main>
         <div>car picture</div>
-        <div>car details</div>
+        <div>
+            <p>Name: <%= car.name %> </p>
+            <p>Price: <%= car.price %></p>
+            <p>Description: <%= car.description %></p>
+            <p>In Stock: <%= car.inStock %></p>
+            <p>Category: <%= category %></p>
+        </div>
     </main>
 </body>
 </html>

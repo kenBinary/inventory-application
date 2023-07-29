@@ -9,6 +9,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const categoryRouter = require('./routes/carCategories');
 const carRouter = require('./routes/cars')
+const crudRouter = require('./routes/crud');
 
 const app = express();
 
@@ -25,8 +26,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // using routers
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/categories',categoryRouter)
+app.use('/catalog',categoryRouter)
 app.use('/cars',carRouter)
+app.use('/operate',crudRouter)
+
 
 // database
 // mongodb+srv://admin_compass:gta4henchmen@cluster0.5lkxi9e.mongodb.net/local_library?retryWrites=true&w=majority
@@ -41,24 +44,6 @@ async function main() {
   console.log(mongoose.connection.readyState);
 }
 
-const asyncHandler = require("express-async-handler");
-const Car = require("./models/car");
-const test = asyncHandler(async (req, res, next) => {
-  const allCars = await Car.find().exec();
-  res.send(allCars)
-});
-app.get("/test",(req,res)=>{
-  res.render("carView");
-})
-app.get("/tests",(req,res)=>{
-  res.render("catalog");
-})
-app.get("/new-entry",(req,res)=>{
-  res.render("newEntry");
-})
-app.get("/modify-entry",(req,res)=>{
-  res.render("modifyEntry");
-})
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

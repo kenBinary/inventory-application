@@ -1,23 +1,27 @@
 const express = require("express");
 const router = express.Router();
+const carController = require("../controllers/carController");
+const categoryController = require("../controllers/categoryController");
+
 
 // retrieves page to add new entry
-router.get("/add", someFunction);
-
+router.get("/add", carController.addCarPage);
 // adds new car
-router.post("/newCar", newCar);
+router.post("/add", carController.addCar);
 
 // adds new category
-router.post("/newCategory", newCategory);
+router.post("/add/category", categoryController.addCategory);
 
-// edits car
-router.post("/editCar", test);
+// // edits car
+// router.post("/editCar", test);
 
-// edits cateogry
-router.post("/editCategory", test);
+// // edits cateogry
+// router.post("/editCategory", test);
 
-// deletes car
-router.delete("/deleteCar", test);
+// // deletes car
+// router.delete("/deleteCar", test);
 
-// deltes gory
-router.delete("/deleteCategory", test);
+// // deltes gory
+// router.delete("/deleteCategory", test);
+
+module.exports = router;

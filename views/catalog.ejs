@@ -11,24 +11,31 @@
 <body>
     <nav>
         <div class="operations">
-            <div>Add</div>
-            <div>Edit</div>
-            <div>Delete</div>
+            <a href="../operate/add">Add</a>
+            <a href="">Edit</a>
+            <a href="">Delete</a>
         </div>
         <div>Car Inventory</div>
-        <div>Home</div>
+        <a href="/">Home</a>
     </nav>
     <aside>
         <p>Categories</p>
-        <div>Example one</div>
-        <div>Example two</div>
+        <% for( let index=0; index < categories.length; index++ ) { %>
+            <div>
+                <a href=<%=categories[index].name%>><%= categories[index].name %></a>
+            </div>
+            <% } %>
     </aside>
     <main>
-        <div>Some Car</div>
-        <div>Some Car</div>
-        <div>Some Car</div>
-        <div>Some Car</div>
-        <div>Some Car</div>
+        <% for( let index=0; index < cars.length; index++ ) { %>
+            <a href="../cars/<%=cars[index].name %>"">
+                <img src="" alt=" some image">
+                <p>Name: <%= cars[index].name %>
+                </p>
+                <p>Price: <%= cars[index].price %>
+                </p>
+            </a>
+            <% } %>
     </main>
 </body>
 

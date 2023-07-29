@@ -5,17 +5,20 @@ const asyncHandler = require("express-async-handler");
 // category controller needs to:
 // -> get all vehicles based on category
 exports.getCars = asyncHandler(async (req, res, next) => {
+    const categories = await Category.find();
     const category = await Category.find({ name: req.params.category })
     const cars = await Car.find({ category: category[0]._id })
-    res.send(cars)
+    let catalogPaths = [1];
+    res.render("catalog", { categories: categories, cars: cars });
 });
 // -> add a category
 exports.addCategory = asyncHandler(async (req, res, next) => {
     const categoryDetail = {
-        name: req.query.category
+        name: req.body.category
     }
     const newCategory = new Category(categoryDetail);
     await newCategory.save();
+    res.redirect("/operate/add")
 });
 // -> delete a category
 exports.deleteCategory = asyncHandler(async (req, res, next) => {

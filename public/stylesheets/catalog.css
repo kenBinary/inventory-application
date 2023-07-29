@@ -59,11 +59,21 @@ main {
   gap: 5px;
   overflow-y: auto;
 }
-main > div {
+main > a {
   height: 49%;
-  flex: 1;
+  text-decoration: none;
+  color: black;
   flex-basis: 33%;
   border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+main > a > img {
+  height: 80%;
+}
+main > a > p {
+  padding: 0.5rem;
+  flex: 1;
 }
 
 /*# sourceMappingURL=catalog.css.map */

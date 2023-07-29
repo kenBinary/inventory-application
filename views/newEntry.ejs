@@ -16,7 +16,7 @@
             <div>Delete</div>
         </div>
         <div>Car Inventory</div>
-        <div>Home</div>
+        <a href="/">Home</a>
     </nav>
     <main>
         <form class="new-car" action="" method="post">
@@ -28,15 +28,20 @@
             <label for="description">Description</label>
             <textarea name="description" id="description" cols="30" rows="10"
                 placeholder="this car can jump"></textarea>
+            <label for="stock">Stock</label>
+            <input type="number" name="stock" id="stock" placeholder="12">
             <label for="category">Category</label>
             <select name="category" id="category">
+                <% for( let index = 0; index < categories.length; index++ ) { %>
+                <option value=<%= categories[index].name %>><%= categories[index].name %></option>
+                <% } %>
             </select>
             <input type="submit" value="Add Car">
         </form>
-        <form class="new-category" action="" method="post">
+        <form class="new-category" action="./add/category" method="post">
             <h1>New Category</h1>
             <label for="new-category">Category</label>
-            <input type="text" name="new-category" id="new-category" placeholder="some category">
+            <input type="text" name="category" id="new-category" placeholder="some category">
             <input type="submit" value="Add Category">
         </form>
     </main>
