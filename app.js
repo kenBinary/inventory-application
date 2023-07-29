@@ -53,6 +53,12 @@ app.get("/test",(req,res)=>{
 app.get("/tests",(req,res)=>{
   res.render("catalog");
 })
+app.get("/new-entry",(req,res)=>{
+  res.render("newEntry");
+})
+app.get("/modify-entry",(req,res)=>{
+  res.render("modifyEntry");
+})
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

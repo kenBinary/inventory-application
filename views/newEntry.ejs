@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Application</title>
-    <link rel="stylesheet" href="/stylesheets/modify-page.css">
+    <link rel="stylesheet" href="/stylesheets/crud-style.css">
 </head>
 
 <body>
@@ -19,12 +19,8 @@
         <div>Home</div>
     </nav>
     <main>
-        <form class="modify-car" action="" method="put">
-            <div>
-                <h1>Car</h1>
-                <select name="cars" id="cars">
-                </select>
-            </div>
+        <form class="new-car" action="" method="post">
+            <h1>New Car</h1>
             <label for="name">Name</label>
             <input type="text" name="name" id="name" placeholder="Some Car">
             <label for="price">Price</label>
@@ -35,22 +31,13 @@
             <label for="category">Category</label>
             <select name="category" id="category">
             </select>
-            <div>
-                <button type="submit" formmethod="put">Edit</button>
-                <button type="submit" formmethod="delete">Delete</button>
-            </div>
+            <input type="submit" value="Add Car">
         </form>
-        <form class="modify-category" action="" method="put">
-            <div>
-                <h1>Category</h1>
-                <select name="categories" id="categories"></select>
-            </div>
-            <label for="modify-category">Category</label>
-            <input type="text" name="category" id="modify-category" placeholder="some category">
-            <div>
-                <button type="submit" formmethod="put">Edit</button>
-                <button type="submit" formmethod="delete">Delete</button>
-            </div>
+        <form class="new-category" action="" method="post">
+            <h1>New Category</h1>
+            <label for="new-category">Category</label>
+            <input type="text" name="new-category" id="new-category" placeholder="some category">
+            <input type="submit" value="Add Category">
         </form>
     </main>
 </body>
