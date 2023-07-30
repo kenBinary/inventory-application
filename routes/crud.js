@@ -12,16 +12,19 @@ router.post("/add", carController.addCar);
 // adds new category
 router.post("/add/category", categoryController.addCategory);
 
-// // edits car
-// router.post("/editCar", test);
+// retrieves page to modify entries
+router.get("/modify", carController.modifyPage);
 
-// // edits cateogry
-// router.post("/editCategory", test);
+// edits car
+router.post("/modify/edit_car", carController.editCar);
 
-// // deletes car
-// router.delete("/deleteCar", test);
+// deletes car
+router.post("/modify/delete_car", carController.deleteCar);
 
-// // deltes gory
-// router.delete("/deleteCategory", test);
+// edits category
+router.post("/modify/edit_category", categoryController.editCategory);
+
+// deletes category
+router.post("/modify/delete_category", categoryController.deleteCategory);
 
 module.exports = router;

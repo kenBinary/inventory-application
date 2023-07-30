@@ -20,16 +20,20 @@ exports.addCategory = asyncHandler(async (req, res, next) => {
     await newCategory.save();
     res.redirect("/operate/add")
 });
-// -> delete a category
-exports.deleteCategory = asyncHandler(async (req, res, next) => {
-    const categoryName = req.query.category;
-    await Category.deleteOne({ name: categoryName });
-});
+
 // -> edit a category
 exports.editCategory = asyncHandler(async (req, res, next) => {
-    const prevName = req.query.prevName;
-    const newCategory = await Category.find({ name: prevName });
-    newCategory.name = req.query.newName;
+    const selected = req.body.selectedCategory;
+    const newCategory = await Category.findOne({ name: selected });
+    newCategory.name = req.body.newCategory;
+    console.log(newCategory);
     await newCategory.save();
+    res.redirect("../modify");
+});
 
+// -> delete a category
+exports.deleteCategory = asyncHandler(async (req, res, next) => {
+    const selected = req.body.selectedCategory;
+    await Category.deleteOne({ name: selected });
+    res.redirect("../modify");
 });

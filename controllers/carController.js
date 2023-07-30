@@ -29,26 +29,31 @@ exports.addCar = asyncHandler(async (req, res, next) => {
     await newCar.save();
     res.redirect("/operate/add")
 });
+// -> add modify entry page
+exports.modifyPage = asyncHandler(async (req, res, next) => {
+    const cars = await Car.find();
+    const categories = await Category.find();
+    res.render("modifyEntry", { cars: cars, categories: categories });
+});
+
 // -> edit car
 exports.editCar = asyncHandler(async (req, res, next) => {
-    const prevName = req.query.prevName;
-    const carDetail = {
-        name: req.query.newName,
-        price: req.query.newPrice,
-        description: req.query.newDescription,
-        inStock: req.query.newStock,
-        category: req.query.newCategory
-    }
-    const newCar = await Car.find({ name: prevName })
-    newCar.name = carDetail.name;
-    newCar.price = carDetail.price;
-    newCar.description = carDetail.description;
-    newCar.category = carDetail.category;
+    const selectedCar = req.body.selectedCar;
+    const category = await Category.findOne({ name: req.body.newCategory });
+    const newCar = await Car.findOne({ name: selectedCar })
+    newCar.name = req.body.newName
+    newCar.price = req.body.newPrice;
+    newCar.description = req.body.newDescription;
+    newCar.inStock = req.body.newStock;
+    newCar.category = category._id;
+    console.log(newCar)
     await newCar.save();
+    res.redirect("../modify");
 });
 
 // -> delete a car
 exports.deleteCar = asyncHandler(async (req, res, next) => {
-    const prevName = req.query.prevName;
-    await Car.deleteOne({ name: prevName })
-})
+    const selectedCar = req.body.selectedCar;
+    await Car.deleteOne({ name: selectedCar })
+    res.redirect("../modify");
+});

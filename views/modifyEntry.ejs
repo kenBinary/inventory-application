@@ -11,45 +11,62 @@
 <body>
     <nav>
         <div class="operations">
-            <div>Add</div>
-            <div>Edit</div>
-            <div>Delete</div>
+            <a href="../operate/add">Add</a>
+            <a href="../operate/modify">Edit</a>
         </div>
         <div>Car Inventory</div>
-        <div>Home</div>
+        <a href="/">Home</a>
     </nav>
     <main>
-        <form class="modify-car" action="" method="put">
+        <form class="modify-car" action="./modify/update" method="post">
             <div>
                 <h1>Car</h1>
-                <select name="cars" id="cars">
+                <select name="selectedCar" id="cars">
+                    <% for( let index=0; index < cars.length; index++ ) { %>
+                        <option value="<%= cars[index].name %>">
+                            <%= cars[index].name %>
+                        </option>
+                        <% } %>
                 </select>
             </div>
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" placeholder="Some Car">
+            <label for=" name">Name</label>
+            <input type="text" name="newName" id="name" placeholder="Some Car">
             <label for="price">Price</label>
-            <input type="number" name="price" id="price" placeholder="1000">
+            <input type="number" name="newPrice" id="price" placeholder="1000">
             <label for="description">Description</label>
-            <textarea name="description" id="description" cols="30" rows="10"
+            <textarea name="newDescription" id="description" cols="30" rows="10"
                 placeholder="this car can jump"></textarea>
+            <label for="stock">Stock</label>
+            <input type="number" name="newStock" id="stock" placeholder="12">
             <label for="category">Category</label>
-            <select name="category" id="category">
+            <select name="newCategory" id="category">
+                <% for( let index=0; index < categories.length; index++ ) { %>
+                    <option value="<%= categories[index].name %>">
+                        <%= categories[index].name %>
+                    </option>
+                    <% } %>
             </select>
             <div>
-                <button type="submit" formmethod="put">Edit</button>
-                <button type="submit" formmethod="delete">Delete</button>
+                <button type="submit" formaction="./modify/edit_car">Edit</button>
+                <button type="submit" formaction="./modify/delete_car">Delete</button>
             </div>
         </form>
-        <form class="modify-category" action="" method="put">
+        <form class="modify-category" action="" method="post">
             <div>
                 <h1>Category</h1>
-                <select name="categories" id="categories"></select>
+                <select name="selectedCategory" id="categories">
+                    <% for( let index=0; index < categories.length; index++ ) { %>
+                        <option value="<%= categories[index].name %>">
+                            <%= categories[index].name %>
+                        </option>
+                        <% } %>
+                </select>
             </div>
             <label for="modify-category">Category</label>
-            <input type="text" name="category" id="modify-category" placeholder="some category">
+            <input type="text" name="newCategory" id="modify-category" placeholder="some category">
             <div>
-                <button type="submit" formmethod="put">Edit</button>
-                <button type="submit" formmethod="delete">Delete</button>
+                <button type="submit" formaction="./modify/edit_category">Edit</button>
+                <button type="submit" formaction="./modify/delete_category">Delete</button>
             </div>
         </form>
     </main>
